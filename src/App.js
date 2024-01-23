@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import AyahList from "./components/AyahList";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAyah } from "./store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+
+    const dispatch = useDispatch();
+    const { isLoading, data, error } = useSelector((state) => {
+        return state.ayahs;
+    });
+
+    useEffect(() => {
+        dispatch(fetchAyah());
+    }, [dispatch]);
+
+    return (
+        <div>
+            <AyahList data={data}/>
+        </div>
+    )
 }
 
 export default App;
