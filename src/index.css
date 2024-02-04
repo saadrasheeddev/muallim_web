@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'uthmanic-arabic';
+    src: url('./fonts/uthmanic_script.woff') format('woff');
+    /* Add other font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: uthmanic-arabic, sans-serif;
+  }
+  
